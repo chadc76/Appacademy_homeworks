@@ -26,6 +26,22 @@ class Board
   end
 
   def make_move(start_pos, current_player_name)
+    stones = cups[start_pos].count
+    cups[start_pos] = []
+    current_cup = start_pos + 1
+    end_cup = 0
+    player_1 == current_player_name ? opponents_cup = 13 : opponents_cup = 6
+    stones.times do |i|
+      next_cup = (current_cup + i) % 14
+      if next_cup == opponents_cup
+        current_cup += 1
+        next_cup = (current_cup + i) % 14
+      end
+      cups[next_cup] << :stone
+      end_cup = next_cup
+    end
+    self.next_turn(end_cup)
+    self.render
   end
 
   def next_turn(ending_cup_idx)
