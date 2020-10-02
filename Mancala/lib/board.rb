@@ -65,5 +65,9 @@ class Board
   end
 
   def winner
+    result = cups[6].count <=> cups[13].count
+    return player_1 if result == 1
+    return player_2 if result == -1
+    return :draw
   end
 end
