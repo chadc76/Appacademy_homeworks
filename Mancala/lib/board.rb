@@ -40,12 +40,15 @@ class Board
       cups[next_cup] << :stone
       end_cup = next_cup
     end
-    self.next_turn(end_cup)
     self.render
+    self.next_turn(end_cup)
   end
 
   def next_turn(ending_cup_idx)
     # helper method to determine whether #make_move returns :switch, :prompt, or ending_cup_idx
+    return :prompt if ending_cup_idx == 6 || ending_cup_idx == 13
+    return :switch if cups[ending_cup_idx].length == 1
+    return ending_cup_idx
   end
 
   def render
