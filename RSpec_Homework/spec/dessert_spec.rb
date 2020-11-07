@@ -6,8 +6,8 @@ Instructions: implement all of the pending specs (the `it` statements without bl
 =end
 
 describe Dessert do
-  let(:chef) { double(:name => "Chad") }
-  subject(:brownie) {Dessert.new("brownie", 10, chef)}
+  let(:chef) { double("chef", :name => "Chad") }
+  subject(:brownie) {Dessert.new("brownie", 100, chef)}
 
   describe "#initialize" do
     it "sets a type" do
@@ -15,7 +15,7 @@ describe Dessert do
     end
 
     it "sets a quantity" do 
-      expect(brownie.quantity).to eq(10)
+      expect(brownie.quantity).to eq(100)
     end
 
     it "starts ingredients as an empty array" do
@@ -37,21 +37,22 @@ describe Dessert do
 
   describe "#mix!" do
     it "shuffles the ingredient array" do
-      ingredients = %w(sugar chocolate milk) 
+      ingredients = %w(sugar chocolate flour egg butter) 
       ingredients.each {|ingredient| brownie.add_ingredient(ingredient)}
       brownie.mix!
       expect(brownie.ingredients).to_not eq(ingredients)
+      expect(brownie.ingredients.sort).to eq(ingredients.sort)
     end
   end
 
   describe "#eat" do
     it "subtracts an amount from the quantity" do
-      brownie.eat(2)
-      expect(brownie.quantity).to eq(8)
+      brownie.eat(20)
+      expect(brownie.quantity).to eq(80)
     end
 
     it "raises an error if the amount is greater than the quantity" do 
-      expect { brownie.eat(100) }.to raise_error("not enough left!")
+      expect { brownie.eat(120) }.to raise_error("not enough left!")
     end
   end
 
@@ -63,6 +64,9 @@ describe Dessert do
   end
 
   describe "#make_more" do
-    it "calls bake on the dessert's chef with the dessert passed in"
+    it "calls bake on the dessert's chef with the dessert passed in" do
+      expect(chef).to receive(:bake).with(brownie)
+      brownie.make_more
+    end
   end
 end
