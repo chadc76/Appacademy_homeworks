@@ -37,7 +37,7 @@
     slow_dance("right-down", tiles_array)
     > 3
 
-  Constant Dance!
+  # Constant Dance!
     
   Now that the octopus is warmed up, let's help her dance faster. Use a different data structure and write a new function so that you can   access the tentacle number in O(1) time.
   
