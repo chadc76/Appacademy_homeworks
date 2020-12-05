@@ -1,4 +1,4 @@
-def biggest_fish(fish)
+def clever_octopus(fish)
   biggest = ""
   fish.each do |f|
     biggest = f if f.length > biggest.length
@@ -8,7 +8,7 @@ end
 
 fish = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh', 'fiiiissshhhhhh']
 
-p biggest_fish(fish)
+p clever_octopus(fish)
 
 def sluggish_octopus(fish)
   biggest = fish.first
