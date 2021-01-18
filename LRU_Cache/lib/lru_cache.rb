@@ -13,10 +13,15 @@ class LRUCache
   
   def add(el)
     # adds element to cache according to LRU principle
-    delete_lru if self.count == cache_size && !cache.include?(el)
-    remove_el(el) if cache.include?(el)
-    @cache << el
-    true
+    if cache.include?(el)
+      remove_el(el)
+      @cache << el
+    elsif self.count == cache_size 
+      delete_lru
+      @cache << el
+    else
+      @cache << el
+    end
   end
   
   def show
