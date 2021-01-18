@@ -36,3 +36,8 @@ class LRUCache
   end
   
 end
+
+# This isn't the typical way to implement an LRU Cache because it take O(n) time to add an object
+# and for deleting an object, because it takes that time to find the object in the array.
+
+# The biggest way to improve the efficincy is to use a HAshmap and Linked list combination
