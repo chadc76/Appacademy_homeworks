@@ -30,6 +30,19 @@ class Play
     SQL
   end
 
+  def self.find_by_playwright(name)
+    PlayDBConnection.instance.execute(<<-SQL,name)
+      SELECT
+        title
+      FROM
+        plays
+      INNER JOIN
+        playwrights ON plays.playwright_id = playwrights.id
+      WHERE
+        playwrights.name = ?
+    SQL
+  end
+
   def initialize(options)
     @id = options['id']
     @title = options['title']
