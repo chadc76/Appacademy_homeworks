@@ -37,15 +37,14 @@ class Artist < ApplicationRecord
 
   def better_tracks_query_joins
     # TODO: your code here
-    albums = Album
+    albums = self
       .select("albums.*, COUNT(*) AS track_count")
       .joins(:tracks)
       .group("albums.id")
-      .where(['artist_id = ?', self.id])
     
-    tracks = {}
-    albums.each { |album| tracks[album.title] = album.track_count }
+    album_counts = {}
+    albums.each { |album| album_counts[album.title] = album.track_count }
 
-    tracks
+    album_counts
   end
 end

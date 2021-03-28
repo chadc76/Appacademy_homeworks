@@ -30,13 +30,13 @@ class Route < ApplicationRecord
 
   def better_drivers_query
     # TODO: your code here
-    routes = self
+    buses = self
       .buses
       .includes(:drivers)
     
     bus_drivers = {}
 
-    routes.each { |r| bus_drivers[r.id] = r.drivers.map(&:name) }
+    buses.each { |b| bus_drivers[b.id] = b.drivers.map(&:name) }
 
     bus_drivers
   end
