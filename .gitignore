@@ -1,2 +1,5 @@
 /IntroToRails/config/master.key
 /IntroToRails/tmp/cache
+/new_app/config/master.key
+/new_app/tmp
+/new_app/log
