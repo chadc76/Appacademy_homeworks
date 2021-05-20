@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: session_tokens
+#
+#  id                     :bigint           not null, primary key
+#  user_sessions_table_id :integer          not null
+#  token                  :string           not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  env                    :string
+#  location               :string
+#
+
+one:
+  user_sessions_table_id: 1
+  session: MyString
+
+two:
+  user_sessions_table_id: 1
+  session: MyString

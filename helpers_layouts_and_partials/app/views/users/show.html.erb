@@ -1,0 +1,23 @@
+<section class="page">
+  <div class="centered-box">
+    <img class="profile-pic" src="https://zultimate.com/wp-content/uploads/2019/12/default-profile.png">
+    <h1><%= current_user.username.upcase %></h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <th>Enviroment</th>
+          <th>Location</th>
+          <th>Logout</th>
+        </tr>
+        <% current_user.session_tokens.each do |token| %>
+          <tr>
+            <%= session_env(token) %>
+            <td><%= token.location %></td>
+            <td><%= button_to "Log out", session_url(token), method: :delete %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>

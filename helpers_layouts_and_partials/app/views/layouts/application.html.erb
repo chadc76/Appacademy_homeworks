@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NinetyNineCats</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" 
+      rel="stylesheet">
+    <link 
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" 
+      rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" 
+      crossorigin="anonymous">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="main-nav">
+      <h1><%= link_to "99 Cats", cats_url %></h1>
+      <div>
+        <% if !current_user.nil? %>
+          <ul>
+            <li class="login_label">
+              <%= link_to current_user.username, user_url(current_user) %>
+            </li>
+            <li>
+              <% token = SessionToken.find_by(token: session[:session_token]) %>
+              <%= button_to "LOG OUT", session_url(token), method: :delete %>
+            </li>
+          </ul>
+        <% else %>
+          <%= link_to "LOG IN", new_session_url %>
+          <%= link_to "SIGN UP", new_user_url %>
+        <% end %>
+      </div>
+    </nav>
+
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>
