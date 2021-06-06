@@ -1,0 +1,16 @@
+<h1 class="page-header">Bands</h1>
+
+<%= render 'shared/flashes', types: :notice %>
+
+<ul class="main-list">
+  <% if @bands.empty?%>
+    <p>There are no bands... yet!</p>
+  <% else%>
+    <%= render @bands %>
+  <% end %>
+</ul>
+
+<% if current_user.admin %>
+  <h4 class="sub-header">Links</h4>
+  <a class="button" href="<%= new_band_url %>">New Band</a>
+<% end %> 

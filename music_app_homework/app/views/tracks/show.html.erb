@@ -1,0 +1,46 @@
+<h1 class="page-header"><% title = @track.bonus_track ? @track.title + "(Bonus track)" : @track.title %><%= title %></h1>
+
+<%= render 'shared/flashes', types: :notice %>
+
+<%= ugly_lyrics(@track.lyrics) %>
+
+<h4 class="sub-header">New Note</h4>
+
+<%= render 'notes/form', track_id: @track.id %>
+
+<h4 class="sub-header">Notes</h4>
+
+<% @track.notes.each do |note| %>
+<%= render 'notes/note', note: note %>
+<% end %>
+
+<div class="tags-container">
+  <h4 class="tags-header">Tags</h4>
+  <ul class="page-links">
+    <% tags = @track.tags %>
+    <% if !tags.empty? %>
+      <% tags.each do |tag| %>
+        <%= render 'shared/tags', tag: tag %>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<ul class="tag-links-container">
+  <% if current_user.admin %>
+    <li><%= link_to 'Add Tags', new_tag_track_url(@track), class: "button" %><li>
+    <% if !@track.tags.empty? %>
+      <li><%= link_to "Remove Tags", edit_tags_track_url(@track), class: "button" %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<h4 class="sub-header">Links</h4>
+
+<ul class="page-links">
+  <% if current_user.admin %>
+    <li><%= link_to "Edit Track", edit_track_url(@track), class: "button" %></li>
+    <li><%= button_to "Destroy Track", track_url, method: :delete %></li>
+  <% end %>
+  <li><%= link_to "Back To #{@track.album.title}", album_url(@track.album_id), class: "button" %></li>
+</ul>

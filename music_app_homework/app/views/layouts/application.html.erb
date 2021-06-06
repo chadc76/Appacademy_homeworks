@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MusicApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap" 
+      rel="stylesheet">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="main-content">
+      <h1 class="main-logo">Music App</h1>
+
+      <% if current_user %>
+        <nav>
+          <% if current_user.admin %>
+          <div class="admin-header">
+            <a class="button" href="<%=bands_url %>">Take Me Home</a>
+            <a class="button" href="<%=users_url %>">Take Me To Users</a>
+          </div>
+        <% else %>
+          <a class="button" href="<%=bands_url %>">Take Me Home</a>
+          <% end %>
+          <div class="user-detail">
+            <p>Logged in as: <%=current_user.email%></p>
+            <%= button_to "Sign Out", session_url, method: :delete %>
+          </div>
+        </nav>
+      <% end %>
+
+      <% if current_user %>
+        <div class="search-bar-container">
+          <form action="<%= search_results_url %>" method="get">
+            <select class="search-drop-down" name="search[search_type]">
+              <option 
+                value="All" 
+                <%= @search_type == "All" ? "selected" : "" %>>All</option>
+              <option 
+                value="Album" 
+                <%= @search_type == "Album" ? "selected" : "" %>>Albums</option>
+              <option 
+                value="Band" 
+                <%= @search_type == "Band" ? "selected" : "" %>>Bands</option>
+              <option 
+                value="Track" 
+                <%= @search_type == "Track" ? "selected" : "" %>>Tracks</option>
+              <option 
+                value="Tag" 
+                <%= @search_type == "Tag" ? "selected" : "" %>>Tags</option>
+            </select>
+  
+            <% if @search %>
+              <input
+              type="search" 
+              name="search[search_input]" 
+              value="<%= @search %>"
+              required>
+            <% else %>
+              <input
+                type="search" 
+                name="search[search_input]" 
+                placeholder="Search.."
+                required>
+            <% end %>
+              <input type="submit" value="Search">
+          </form>
+        </div>
+      <% end  %>
+        
+      <%= yield %>
+    </div>
+  </body>
+</html>
