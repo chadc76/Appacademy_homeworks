@@ -5,3 +5,4 @@
 /new_app/log
 require 'helpers_layouts_and_partials/.gitignore'
 require 'music_app_homework/.gitignore'
+require 'Polymorphism_and_Concerns/.gitignore'
