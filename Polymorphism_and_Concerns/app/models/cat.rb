@@ -1,5 +1,5 @@
 class Cat < ApplicationRecord
-  validates :name, presence: true
+  include Toyable
 
-  has_many :toys,  as: :toyable, dependent: :destroy
+  validates :name, presence: true
 end
