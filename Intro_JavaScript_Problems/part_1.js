@@ -17,7 +17,7 @@ isSubstring("Jump for joy", "joys");
 const fizzBuzz = (array) => {
   let newArr = array.filter(
     num => {
-      if ((num % 3 === 0 || num % 5 === 0) && num % 15 != 0){
+      if ((num % 3 === 0) ^ (num % 5 === 0)){
         return num;
       };
     }
@@ -52,8 +52,8 @@ const sumOfNPrimes = (n) => {
   let sum = 0;
   while (primes < n) {
     if (isPrime(i)){
-      sum += i
-      primes++
+      sum += i;
+      primes++;
     }
     i++
   }
