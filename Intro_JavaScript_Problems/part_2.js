@@ -1,15 +1,13 @@
 // Phase I: Callbacks
 
-function titleize(arr, callback) {
-  const newArr = arr.map(name => `Mx. ${name} Jingleheimer Schmidt`);
-  callback(newArr);
+function titleize(names, callback) {
+  const newNames = names.map(name => `Mx. ${name} Jingleheimer Schmidt`);
+  callback(newNames);
 };
 
-function printCallback(arr) {
-  arr.forEach(name => console.log(name));
-};
-
-titleize(["Mary", "Brian", "Leo"], printCallback);
+titleize(["Mary", "Brian", "Leo"], (names) => {
+  names.forEach(name => console.log(name));
+});
 
 
 // Phase II: Constructors, Prototypes, and this
@@ -64,3 +62,20 @@ Elephant.paradeHelper = (elephant) => {
 };
 
 herd.forEach(elepahnt => Elephant.paradeHelper(elepahnt));
+
+
+// Phase IV: Closures
+
+function dinerBreakfast(food) {
+  let order = 'I\'d like cheesy scrambled eggs please.';
+  console.log(order);
+
+  return function (food) {
+    order = `${order.slice(0, order.length - 8)} and ${food} please`;
+    console.log(order);
+  };
+};
+
+let bfastOrder = dinerBreakfast();
+bfastOrder("chocolate chip pancakes");
+bfastOrder("grits");
