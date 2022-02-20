@@ -26,3 +26,21 @@ const fizzBuzz = (array) => {
 };
 
 fizzBuzz([1,3,4,5,9,10,12,15,30,60]);
+
+
+const isPrime = (num) => {
+  let i = 2
+  while (i < num ) {
+    if (num % i == 0){
+      console.log(false)
+      return
+    }
+    i++
+  }
+  console.log(true)
+}
+
+isPrime(2);
+isPrime(10);
+isPrime(15485863);
+isPrime(3548563);
