@@ -1,11 +1,11 @@
 // Phase I: Callbacks
 
-function titleize(arr, callback) => {
+function titleize(arr, callback) {
   const newArr = arr.map(name => `Mx. ${name} Jingleheimer Schmidt`);
   callback(newArr);
 };
 
-function printCallback(arr) => {
+function printCallback(arr) {
   arr.forEach(name => console.log(name));
 };
 
@@ -47,3 +47,20 @@ console.log(cecil.tricks);
 cecil.addTrick("Singing");
 console.log(cecil.tricks);
 cecil.play();
+
+
+// Phase III: Function Invocation
+
+
+let ellie = new Elephant("Ellie", 185, ["giving human friends a ride", "playing hide and seek"]);
+let charlie = new Elephant("Charlie", 200, ["painting pictures", "spraying water for a slip and slide"]);
+let kate = new Elephant("Kate", 234, ["writing letters", "stealing peanuts"]);
+let micah = new Elephant("Micah", 143, ["trotting", "playing tic tac toe", "doing elephant ballet"]);
+
+let herd = [ellie, charlie, kate, micah];
+
+Elephant.paradeHelper = (elephant) => {
+  console.log(`${elephant.name} is trotting by!`);
+};
+
+herd.forEach(elepahnt => Elephant.paradeHelper(elepahnt));
