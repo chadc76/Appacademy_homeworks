@@ -2,8 +2,16 @@ document.addEventListener("DOMContentLoaded", function(){
   const canvas = document.getElementById('mycanvas');
   canvas.style.width = 500;
   canvas.style.height = 500;
-  const ctx = canvas.getContext('2d');
 
+  const ctx = canvas.getContext('2d');
   ctx.fillStyle = 'red';
-  void ctx.fillRect(0, 0, 500, 500);
+  ctx.fillRect(0, 0, 500, 500);
+
+  ctx.beginPath();
+  ctx.arc(100, 100, 20, 0, 2*Math.PI);
+  ctx.strokeStyle = 'black'
+  ctx.lineWidth = 5;
+  ctx.stroke();
+  ctx.fillStyle = 'blue';
+  ctx.fill();
 });
