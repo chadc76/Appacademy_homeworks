@@ -141,6 +141,9 @@
 	  //hint: use window._randomColorString() (defined at top) to get a random color!
 	
 	  //your code here!
+	  $('.square').each( function(index, elem) {
+	    $(elem).css('background-color', window._randomColorString());
+	  });
 	};
 	
 	View.prototype.exercise7 = function(){
