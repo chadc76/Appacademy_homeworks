@@ -61,6 +61,9 @@ View.prototype.exercise5 = function () {
   //  'data-pos' of every square
 
   //your code here!
+  $('#easel').on('click', '.square', function (e) {
+    alert($(e.target).attr('data-pos')); // logs the list item that was clicked
+  });
 };
 
 View.prototype.exercise6 = function () {
