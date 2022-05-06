@@ -91,7 +91,7 @@
 	
 	  //your code here!
 	
-	  $(".square").css("background-color", "orange");
+	  $('li').addClass('orange')
 	};
 	
 	View.prototype.exercise2 = function () {
@@ -99,6 +99,7 @@
 	  //Result: Every square vanishes
 	
 	  //your code here!
+	  $('.square').remove();
 	};
 	
 	View.prototype.exercise3 = function () {
