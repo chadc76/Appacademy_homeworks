@@ -129,7 +129,7 @@
 	
 	  //your code here!
 	  $('#easel').on('click', '.square', function (e) {
-	    alert($(e.target).attr('data-pos')); // logs the list item that was clicked
+	    alert($(e.currentTarget).attr('data-pos')); // logs the list item that was clicked
 	  });
 	};
 	
@@ -154,6 +154,9 @@
 	  //rainbow.
 	
 	  //your code here!
+	  $('#easel').on("mouseenter", ".square", e => {
+	    console.log($(e.currentTarget).css('background-color'));
+	  });
 	};
 	
 	
